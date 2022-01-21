@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 
 // ignore: uri_does_not_exist
 import 'platform/stub_svg.dart'
-    // ignore: uri_does_not_exist
+// ignore: uri_does_not_exist
     if (dart.library.io) 'platform/io_svg.dart'
-    // ignore: uri_does_not_exist
+// ignore: uri_does_not_exist
     if (dart.library.html) 'platform/browser_svg.dart';
 
 class WebsafeSvg {
@@ -97,4 +97,20 @@ class WebsafeSvg {
         semanticsLabel: semanticsLabel,
         width: width,
       );
+
+  Widget assetIcon(BuildContext context, String assetPath, {double? size}) {
+    final iconTheme = IconTheme.of(context);
+    return WebsafeSvg.asset(
+      assetPath,
+      width: size ?? iconTheme.size,
+      height: size ?? iconTheme.size,
+      color: iconTheme.color,
+    );
+  }
+
+  Widget assetIconWithoutContext(String assetPath, {double? size}) {
+    return Builder(
+      builder: (context) => assetIcon(context, assetPath, size: size),
+    );
+  }
 }
