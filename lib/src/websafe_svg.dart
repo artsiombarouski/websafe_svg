@@ -98,9 +98,13 @@ class WebsafeSvg {
         width: width,
       );
 
-  Widget assetIcon(BuildContext context, String assetPath, {double? size}) {
+  static Widget assetIcon(
+    BuildContext context,
+    String assetPath, {
+    double? size,
+  }) {
     final iconTheme = IconTheme.of(context);
-    return WebsafeSvg.asset(
+    return asset(
       assetPath,
       width: size ?? iconTheme.size,
       height: size ?? iconTheme.size,
@@ -108,7 +112,7 @@ class WebsafeSvg {
     );
   }
 
-  Widget assetIconWithoutContext(String assetPath, {double? size}) {
+  static Widget assetIconWithoutContext(String assetPath, {double? size}) {
     return Builder(
       builder: (context) => assetIcon(context, assetPath, size: size),
     );
