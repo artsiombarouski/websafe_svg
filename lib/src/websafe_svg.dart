@@ -118,3 +118,97 @@ class WebsafeSvg {
     );
   }
 }
+
+Widget assetSvg(String asset,
+        {alignment = Alignment.center,
+        Color? color,
+        BoxFit fit = BoxFit.contain,
+        double? height,
+        String? package,
+        WidgetBuilder? placeholderBuilder,
+        String? semanticsLabel,
+        double? width}) =>
+    svgFromAsset(
+      asset,
+      alignment: alignment,
+      color: color,
+      fit: fit,
+      height: height,
+      package: package,
+      placeholderBuilder: placeholderBuilder,
+      semanticsLabel: semanticsLabel,
+      width: width,
+    );
+
+Widget memorySvg(Uint8List bytes,
+        {alignment = Alignment.center,
+        Color? color,
+        BoxFit fit = BoxFit.contain,
+        double? height,
+        WidgetBuilder? placeholderBuilder,
+        String? semanticsLabel,
+        double? width}) =>
+    svgFromMemory(
+      bytes,
+      alignment: alignment,
+      color: color,
+      fit: fit,
+      height: height,
+      placeholderBuilder: placeholderBuilder,
+      semanticsLabel: semanticsLabel,
+      width: width,
+    );
+
+Widget networkSvg(
+  String url, {
+  alignment = Alignment.center,
+  Color? color,
+  BoxFit fit = BoxFit.contain,
+  Map<String, String>? headers,
+  double? height,
+  WidgetBuilder? placeholderBuilder,
+  String? semanticsLabel,
+  double? width,
+}) =>
+    svgFromNetwork(
+      url,
+      alignment: alignment,
+      color: color,
+      fit: fit,
+      headers: headers,
+      height: height,
+      placeholderBuilder: placeholderBuilder,
+      semanticsLabel: semanticsLabel,
+      width: width,
+    );
+
+Widget stringSvg(
+  String bytes, {
+  alignment = Alignment.center,
+  Color? color,
+  BoxFit fit = BoxFit.contain,
+  double? height,
+  WidgetBuilder? placeholderBuilder,
+  String? semanticsLabel,
+  double? width,
+}) =>
+    svgFromString(
+      bytes,
+      alignment: alignment,
+      color: color,
+      fit: fit,
+      height: height,
+      placeholderBuilder: placeholderBuilder,
+      semanticsLabel: semanticsLabel,
+      width: width,
+    );
+
+Widget assetSvgIcon(
+  BuildContext context,
+  String assetPath, {
+  double? size,
+}) =>
+    WebsafeSvg.assetIcon(context, assetPath, size: size);
+
+Widget assetSvgIconWithoutContext(String assetPath, {double? size}) =>
+    WebsafeSvg.assetIconWithoutContext(assetPath, size: size);
